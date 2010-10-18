@@ -1,0 +1,6 @@
+span.comments { color: #666; }
+span.strings { color: #6a0; }
+span.regexp { color: #719; }
+span.punct { color: #17b; }
+span.keywords { color: #f0b; }
+span.numbers { color: #d83; }
