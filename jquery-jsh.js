@@ -1,5 +1,5 @@
 /*
-	jQuery-jsh v.1
+	jQuery-jsh v.1.1
 	http://github.com/phoboslab/jQuery-JSH
 
 	Released under MIT license:
@@ -36,12 +36,12 @@
 
 	var p = [];
 	var x = [
-		// escaped characters
-		/\\./g, 
+		// escaped characters and names with $
+		/\\.|\$\w+/g, 
 			push,
 		
 		// hint to find regexps (slash after ,=:{[ but ignore comments)
-		/([\[({=:+,](\s*|(\/\*[\s|\S]*?\*\/|\/\/.*))*)\/(?![\/\*])/g, '$1<h>/',
+		/([\[({=:+,](\s|(\/\*[\s|\S]*?\*\/|\/\/.*))*)\/(?![\/\*])/g, '$1<h>/',
 	
 		// comments, regexps or strings
 		/(\/\*[\s|\S]*?\*\/|\/\/.*)|(<h>\/.+?\/\w*)|(".*?"|'.*?')/g, 
