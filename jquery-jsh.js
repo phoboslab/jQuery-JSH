@@ -26,7 +26,7 @@
 		else if( string ) {
 			s = span( 'strings', m );
 		}
-		
+
 		return push( s ) ;
 	};
 
@@ -37,42 +37,42 @@
 	var p = [];
 	var x = [
 		// escaped characters and names with $
-		/\\.|\$\w+/g, 
+		/\\.|\$\w+/g,
 			push,
-		
+
 		// hint to find regexps (slash after ,=:{[ but ignore comments)
 		/([\[({=:+,](\s|(\/\*[\s|\S]*?\*\/|\/\/.*))*)\/(?![\/\*])/g, '$1<h>/',
-	
+
 		// comments, regexps or strings
-		/(\/\*[\s|\S]*?\*\/|\/\/.*)|(<h>\/.+?\/\w*)|(".*?"|'.*?')/g, 
+		/(\/\*[\s|\S]*?\*\/|\/\/.*)|(<h>\/.+?\/\w*)|(".*?"|'.*?')/g,
 			pushBlock,
-		
+
 		// punctuations
-		/((&\w+;|[-\/+*=?:.,;()\[\]{}|%^!])+)/g, 
+		/((&\w+;|[-\/+*=?:.,;()\[\]{}|%^!])+)/g,
 			span('punct'),
-	
+
 		// keywords
-		new RegExp( 
+		new RegExp(
 			"\\b(" +
 				"break|case|catch|continue|default|delete|do|else|false|" +
 				"finally|for|function|if|in|instanceof|new|null|return|" +
 				"switch|this|throw|true|try|typeof|var|void|while|with" +
 			")\\b", "gi"
 		), span('keywords'),
-		
+
 		// numbers
-		/\b(0x[\da-f]+|\d+)\b/g, 
+		/\b(0b[0-1]+|0x[\da-f]+|\d+)\b/g,
 			span('numbers'),
-			
+
 		// insert block back in again
-		/<r(\d+)>/g, 
+		/<r(\d+)>/g,
 			pop,
-			
+
 		// strip unused regexp hints
 		/<h>/g,
 			''
 	];
-	
+
 	$.fn.jsh = function( tabsToSpaces ) {
 		p = [];
 		this.each(function(index) {
@@ -85,8 +85,8 @@
 			}
 			$(this).html( code );
 		});
-		
+
 		return this;
 	};
-	
+
 })(jQuery);
